@@ -1,5 +1,5 @@
 # Use an openjdk base image
-FROM tomcat:latest
+FROM openjdk:latest
 
 # Set the working directory in the container
 WORKDIR /app
