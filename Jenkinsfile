@@ -16,7 +16,7 @@ pipeline {
         stage('Sonar Analysis') {
             steps {
                 script {
-                    withSonarQubeEnv(credentialsId: 'sonarqube') {
+                    withSonarQubeEnv(credentialsId: 'sonarqube', installationName: 'sonarqube') {
                         sh """
                         ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
                          mvn clean verify sonar:sonar \
