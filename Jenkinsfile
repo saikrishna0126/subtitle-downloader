@@ -21,7 +21,7 @@ pipeline {
                         sh '''
                         ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                        -Dsonar.sources=src \
+                        -Dsonar.sources=. \
                         -Dsonar.host.url=${SONAR_SERVER_URL}
                         -Dsonar.login=${SONAR_LOGIN}
                         '''
