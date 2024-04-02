@@ -6,7 +6,7 @@ pipeline {
     }
     tools {
         maven 'maven'
-        sonarqube 'sonarqube'
+        // If SonarQube Scanner is not configured as a tool in Jenkins, remove the 'tools' block for 'sonarqube'
     }
     stages {
         stage('Build the code') {
@@ -17,10 +17,10 @@ pipeline {
         stage('Sonar Analysis') {
             steps {
                 script {
-                    withSonarQubeEnv(credentialsId: 'sonarqube', installationName: 'sonarqube') {
+                    // Running SonarQube Scanner after Maven build
+                    withSonarQubeEnv(credentialsId: 'sonarqube') {
                         sh """
                         ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
-                         // mvn clean verify sonar:sonar \
                         -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                         -Dsonar.sources=src \
                         -Dsonar.host.url=${SONAR_SERVER_URL} \
