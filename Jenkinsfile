@@ -65,7 +65,7 @@ pipeline {
                     // Build Docker image
                     sh "docker build -t ${DOCKER_IMAGE} ."
                     // Login to Harbor registry
-                    sh "docker login ${HARBOR_URL} -u ${HARBOR_USER} -p ${HARBOR_PASSWORD}"
+                    sh "docker login ${HARBOR_URL} -u ${HARBOR_USERNAME} -p ${HARBOR_PASSWORD}"
                     // Tag Docker image
                     sh "docker tag ${DOCKER_IMAGE} ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
                     // Push Docker image to Harbor registry
