@@ -6,6 +6,7 @@ pipeline {
     }
     tools {
         maven 'maven'
+        sonarqube 'sonarqube'
     }
     stages {
         stage('Build the code') {
@@ -19,7 +20,7 @@ pipeline {
                     withSonarQubeEnv(credentialsId: 'sonarqube', installationName: 'sonarqube') {
                         sh """
                         ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
-                         mvn clean verify sonar:sonar \
+                         // mvn clean verify sonar:sonar \
                         -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                         -Dsonar.sources=src \
                         -Dsonar.host.url=${SONAR_SERVER_URL} \
