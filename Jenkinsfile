@@ -12,6 +12,14 @@ pipeline {
             steps {
                 sh 'mvn clean package'
             }
+            post {
+                success {
+                    slackSend color: '#36A64F', message: "Build Success - ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
+                }
+                failure {
+                    slackSend color: '#FF0000', message: "Build failed! - ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
+                }
+            }
         }
         stage('Sonar Analysis') {
             steps {
@@ -24,6 +32,14 @@ pipeline {
                     -Dsonar.host.url=${SONAR_SERVER_URL} \
                     -Dsonar.login=${SONAR_LOGIN}
                     """
+                }
+            }
+            post {
+                success {
+                    slackSend color: '#36A64F', message: "Sonar-scan success - ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
+                }
+                failure {
+                    slackSend color: '#FF0000', message: "Sonar-san failed! - ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
                 }
             }
         }
