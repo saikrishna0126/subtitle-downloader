@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Running SonarQube Scanner after Maven build
-                    withSonarQubeEnv(credentialsId: 'sonarqube') {
+                    withSonarQubeEnv(credentialsId: 'sonar-token') {
                         sh """
                         ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
                         -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
