@@ -15,17 +15,15 @@ pipeline {
         }
         stage('Sonar Analysis') {
             steps {
-                script {
-                    // Running SonarQube Scanner after Maven build
-                    withSonarQubeEnv(credentialsId: 'sonarqube', installationName:'sonarqube') {
-                        sh """
-                        ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
-                        -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=${SONAR_SERVER_URL}
-                        -Dsonar.login=${SONAR_LOGIN}
-                        """
-                    }
+                // Running SonarQube Scanner after Maven build
+                withSonarQubeEnv(credentialsId: 'sonarqube', installationName:'sonarqube') {
+                    sh """
+                    ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
+                    -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+                    -Dsonar.sources=src \
+                    -Dsonar.host.url=${SONAR_SERVER_URL} \
+                    -Dsonar.login=${SONAR_LOGIN}
+                    """
                 }
             }
         }
