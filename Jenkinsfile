@@ -68,6 +68,8 @@ pipeline {
         stage('Docker build & push to harbor registry') {
             steps {
                 script {
+                    // Use withCredentials to securely pass Harbor credentials
+                    withCredentials([usernamePassword(credentialsId: 'harbor', usernameVariable: 'HARBOR_USERNAME', passwordVariable: 'HARBOR_PASSWORD')]) {
                     // Build Docker image
                     sh "docker build -t ${DOCKER_IMAGE} ."
                     // Login to Harbor registry
@@ -76,8 +78,9 @@ pipeline {
                     sh "docker tag ${DOCKER_IMAGE} ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
                     // Push Docker image to Harbor registry
                     sh "docker push ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
+                    }
                 }
-            }
+            }      
             post {
                 success {
                     // Send success message to Slack channel
