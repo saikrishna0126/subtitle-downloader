@@ -7,7 +7,7 @@ pipeline {
         SONAR_SCANNER_HOME = '/opt/sonar-scanner'
         SONAR_PROJECT_KEY = 'jenkins'
         // Harbor registry related variables
-        HARBOR_URL = 'https://new-harbor2.duckdns.org/'
+        HARBOR_URL = 'new-harbor2.duckdns.org/'
         HARBOR_REPOSITORY = 'projects'
         HARBOR_CREDENTIALS = credentials('harbor')
         // Docker related variables
