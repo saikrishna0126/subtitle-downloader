@@ -94,7 +94,7 @@ pipeline {
         stage('Deploy the container') {
             steps {
                 // Deploy the Docker container
-                sh "docker run -d --name ${DOCKER_CONTAINER_NAME} -p ${DOCKER_CONTAINER_PORT} ${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
+                sh "docker run -d --name ${DOCKER_CONTAINER_NAME} -p ${DOCKER_CONTAINER_PORT} ${DOCKER_IMAGE}"
             }
             post {
                 success {
