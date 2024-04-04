@@ -1,5 +1,5 @@
 # Use an openjdk base image
-FROM tomcat:latest
+FROM tomcat
 
 MAINTAINER sai
 
