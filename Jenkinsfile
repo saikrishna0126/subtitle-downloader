@@ -7,7 +7,7 @@ pipeline {
         SONAR_SCANNER_HOME = '/opt/sonar-scanner'
         SONAR_PROJECT_KEY = 'jenkins'
         // Harbor registry related variables
-        HARBOR_URL = 'https://new-harbor2.duckdns.org'
+        HARBOR_URL = 'new-harbor2.duckdns.org'
         HARBOR_REPOSITORY = 'projects'
         HARBOR_CREDENTIALS = credentials('harbor')
         // Docker related variables
@@ -82,11 +82,11 @@ pipeline {
             post {
                 success {
                     // Send success message to Slack channel
-                    slackSend color: '#36A64F', message: "Docker image successfully pushed to harbor registry - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
+                    slackSend color: '#36A64F', message: "Docker image successfully pushed to harbor registry - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}"
                 }
                 failure {
                     // Send failure message to Slack channel
-                    slackSend color: '#FF0000', message: "Docker image push to harbor fail - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
+                    slackSend color: '#FF0000', message: "Docker image push to harbor fail - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}"
                 }
             }
         }
