@@ -1,5 +1,5 @@
 # Use an openjdk base image
-FROM tomcat:9.0.87-jdk11-openjdk-slim
+FROM tomcat:9.0.87-jdk11-openjdk
 
 MAINTAINER sai
 
