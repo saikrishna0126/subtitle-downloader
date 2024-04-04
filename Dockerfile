@@ -1,5 +1,5 @@
 # Use an openjdk base image
-FROM tomcat
+FROM tomcat:9.0.87-jdk11-temurin-focal
 
 MAINTAINER sai
 
