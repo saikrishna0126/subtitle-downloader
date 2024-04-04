@@ -99,11 +99,11 @@ pipeline {
             post {
                 success {
                     // Send success message to Slack channel
-                    slackSend color: '#36A64F', message: "Docker container created and run successfully - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
+                    slackSend color: '#36A64F', message: "Docker container created and run successfully - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}"
                 }
                 failure {
                     // Send failure message to Slack channel
-                    slackSend color: '#FF0000', message: "Docker container failed to create - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}:${DOCKER_IMAGE_TAG}"
+                    slackSend color: '#FF0000', message: "Docker container failed to create - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}"
                 }
             }
         }
