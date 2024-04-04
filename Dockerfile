@@ -2,8 +2,7 @@ FROM tomcat:8.0-alpine
 
 LABEL maintainer="saikrishna"
 
-ADD target/
-subtitledownloader-1.0-SNAPSHOT.jar /usr/local/tomcat/webapps/
+ADD target/subtitledownloader-1.0-SNAPSHOT.jar /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
