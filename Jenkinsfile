@@ -30,12 +30,10 @@ pipeline {
             }
             post {
                 success {
-                    // Send success message to Slack channel if build success
-                    slackSend color: '#36A64F', message: "Build Success - ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
+                    slackSend color: '#36a64f', message: "Dependencies and build Success - ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
                 }
                 failure {
-                    // Send failure message to Slack channel if Build fails
-                    slackSend color: '#FF0000', message: "Build failed! - ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
+                    slackSend color: '#ff0000', message: "Dependencies and build failed! - ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
                 }
             }
         }
