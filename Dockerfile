@@ -1,14 +1,13 @@
 # Use an openjdk base image
 FROM tomcat:latest
 
-# Set the working directory in the container
-WORKDIR /app
+MAINTAINER sai
 
-# Copy the application JAR file into the container
-COPY . /app/subtitle-downloader.jar
+RUN apt-get update && apt-get -y upgrade
 
-# Expose any ports the app needs
+WORKDIR /usr/local/tomcat
+COPY target/*.jar /usr/local/tomcat/webapps
+#COPY tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
+#COPY context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
+
 EXPOSE 8080
-
-# Run the application
-CMD ["java", "-jar", "subtitle-downloader.jar"]
