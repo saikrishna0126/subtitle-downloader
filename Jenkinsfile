@@ -13,7 +13,7 @@ pipeline {
         // Docker related variables
         DOCKER_IMAGE = 'java:latest' // Adjust according to your Docker image name
         //DOCKER_IMAGE_TAG = ':java:latest' // Adjust according to your Docker image tag
-        DOCKER_CONTAINER_NAME = 'java:demo'
+        DOCKER_CONTAINER_NAME = 'java'
         DOCKER_CONTAINER_PORT = '8082:8082'
     }
     
