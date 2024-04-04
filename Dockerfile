@@ -1,5 +1,5 @@
 # Use an openjdk base image
-FROM openjdk:latest
+FROM tomcat:latest
 
 # Set the working directory in the container
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app/subtitle-downloader.jar
 
 # Expose any ports the app needs
-EXPOSE 8000
+EXPOSE 8080
 
 # Run the application
 CMD ["java", "-jar", "subtitle-downloader.jar"]
