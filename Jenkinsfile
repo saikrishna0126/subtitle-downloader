@@ -62,6 +62,11 @@ pipeline {
                 }
             }
         }
+        stage('archiveArtifacts') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+            }
+        }
         
         stage('Docker build & push to harbor registry') {
             steps {
