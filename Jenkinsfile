@@ -84,18 +84,7 @@ pipeline {
                     }
                 }
             }      
-            post {
-                success {
-                    // Send success message to Slack channel
-                    slackSend color: '#36A64F', message: "Docker image successfully pushed to harbor registry - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}"
-                }
-                failure {
-                    // Send failure message to Slack channel
-                    slackSend color: '#FF0000', message: "Docker image push to harbor fail - ${HARBOR_URL}/${HARBOR_REPOSITORY}/${DOCKER_IMAGE}"
-                }
-            }
-        }
-        
+            
         stage('Deploy the container') {
             steps {
                 // Deploy the Docker container
