@@ -8,4 +8,4 @@ WORKDIR /app
 COPY target/subtitle-downloader-1.0-SNAPSHOT.jar /app/subtitle-downloader-1.0-SNAPSHOT.jar
 
 # Specify the command to run your application
-CMD ["java", "-jar", "/app/subtitle-downloader.jar"]
+CMD ["java", "-jar", "/app/subtitle-downloader-1.0-SNAPSHOT.jar"]
